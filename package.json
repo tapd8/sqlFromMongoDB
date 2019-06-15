@@ -1,0 +1,24 @@
+{
+  "name": "sqlfrommongodb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tapd8/sqlFromMongoDB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tapd8/sqlFromMongoDB/issues"
+  },
+  "homepage": "https://github.com/tapd8/sqlFromMongoDB#readme",
+  "dependencies": {
+    "qh-sql2mongoscript": "^5.0.11",
+    "restify": "^8.3.3",
+    "restify-clients": "^2.6.6"
+  }
+}
