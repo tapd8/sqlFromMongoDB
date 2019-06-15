@@ -25,17 +25,27 @@ server.post('/sql', function (req, res, next) {
     // console.log(req.body);
     let sql = req.body.sql;
     let mql = sql2mongo.default(sql);
-    req.mql = mql;
-    res.send(mql);
+    req.mql = mql.mongoScript;
+    // res.send(mql);
     return next();
 }, function (req, res, next) {
     // Connection URL
     const url = req.body.uri;
+    let fc = (`mongo --eval '${req.mql}' ${url}`);
+    console.log(fc);
+    // cmd.stdout.pipe(process.stdout);
+    // cmd.stderr.pipe(process.stderr);
 
-    const cmd = exec(`mongo --eval ${req.mql} ${url}`);
-    cmd.stdout.pipe(process.stdout);
-    cmd.stderr.pipe(process.stderr);
-
+    const cmd = exec(fc,(err,stdout,stderr)=>{
+	console.log(err,stdout,stderr);
+	res.send(stdout);
+	// res.send(stderr);
+    });
+    
+    // cmd.on('close', (code, signal) => {
+    // 	console.log(code, signal);
+    // })
+    
     return next();
 });
 

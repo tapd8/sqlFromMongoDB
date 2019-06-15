@@ -12,8 +12,9 @@ client.get('/echo/mark', function (err, req, res, obj) {
 });
 
 client.post('/sql', {
-    sql:"select * from Logs",
-    uri:"mongodb://192.168.0.30:27017/tapdata"
+    sql:`select threadName from Logs where level='ERROR'`,
+//    uri:"mongodb://192.168.0.30:27017/tapdata"
+    uri:"mongodb://admin:QHTFmmbYWKEeEVhv@localhost:27017/tapdata?authSource=admin"
 }, function (err, req, res, obj) {
     assert.ifError(err);
     console.log('Server returned: %j', obj);
